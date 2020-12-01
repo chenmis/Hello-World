@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <p id="first section"></p>
+    <script type="text/javascript">
+      {
+      var my_name;
+      my_name = "Chen Mishali";
+      document.getElementById("first section").innerHTML = "My name is: " + my_name;
+      }
+    </script>
+
+    <p id="second section"></p>
+
+    <script type="text/javascript">
+      function printStr(){
+        return "What is my job, do you ask yourself!?";
+      }
+      document.getElementById("second section").innerHTML = printStr();
+    </script>
+
+    <p id="third section">I am a </p>
+    <button onclick="changeTitle()">Click me to see</button>
+    <script type="text/javascript">
+      function changeTitle(){
+        document.getElementById("third section").innerHTML += "Communications Systems Engineer";
+      }
+    </script>
+
+    <br><br><br>
+    <img id="emoji" src="emoji_sunglasses.png" width="100px" alt="first sunglasses">
+    <br><br>
+    <button onclick="changePic()">Click me to change the pic</button>
+    <script type="text/javascript">
+      function changePic(){
+        document.getElementById("emoji").src = "with_mask.gif";
+      }
+    </script>
+  </body>
+</html>
