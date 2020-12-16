@@ -237,6 +237,12 @@ input[type=submit]:hover {
     right: 10px;
 }
 
+.download_cv {
+    position:fixed;
+    bottom: 10px;
+    left: 10px;
+}
+
 .icons{
     height: 45px;
 }
