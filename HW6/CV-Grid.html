@@ -7,19 +7,21 @@
 <body>
 
   <div class="bottom-right">
+    <a href="#top_div"><img class="icons" src="img/up.png" alt=""></a><br>
     <img class="icons" src="img/in-icon.png" alt=""><br>
     <img class="icons" src="img/git-icon.png" alt=""><br>
-    <img class="icons" src="img/in-icon.png" alt=""><br>
+    <img class="icons" src="img/dribble-logo.png" alt=""><br>
   </div>
 
   <div id="top_div">
 
     <div class="topnav" id="myTopnav">
-      <a href="#about" class="topmenu">ABOUT</a>
+      <a href="#about_a" class="topmenu">ABOUT</a>
       <a href="#skills" class="topmenu">SKILLS</a>
       <a href="#portfolio" class="topmenu">PORTFOLIO</a>
       <a href="#experience" class="topmenu">EXPERIENCE</a>
-      <a href="#contact" class="topmenu">CONTACT</a>
+      <a href="#education" class="topmenu">EDUCATION</a>
+      <a href="#contact_a" class="topmenu">CONTACT</a>
     </div>
     <br>
     <div id="circle">
@@ -32,7 +34,7 @@
   </div>
 
   <div id="center_div">
-
+    <a id="about_a"></a>
     <div id="first_block" class="shaddow">
       <div id="raw">
         <div id="about_title">
@@ -57,6 +59,7 @@
 
     </div>
 
+    <a id="skills"></a>
     <div id="second_block" class="shaddow">
       <h2>Professional Skills</h2>
       <ul style="width:30%; float:left; padding-left:100px;">
@@ -93,6 +96,7 @@
       </ul>
     </div>
 
+    <a id="portfolio"></a>
     <div id="Portfolio_block">
       <div class="headlines" id="Portfolio_title">PORTFOLIO</div>
       <div class="Portfolio_bar" id="portfolio_menu">
@@ -116,7 +120,7 @@
     </div>
 
     <br><br>
-
+    <a id="experience"></a>
     <div class="headlines" style="position:relative; top: 300px;">Work Experience</div><br>
     <div class="work_exp shaddow">
         <div class="we we_left"><h2>Web Developer</h2><h3>2019 – 2020</h3></div>
@@ -150,31 +154,42 @@
     </div><br>
 
 
-
-    <div class="headlines" style="position:relative; top: 400px;">Education</div><br>
-    <div style="width: 100%; height: 200px; position:relative; top: 450px;">
-        <div style="float: left; width: 30%; height: 100%; border-style: solid; border-color: black;"></div>
-        <div style="float: right; width: 70%;height: 100%; border-style: solid; border-color: black;"></div>
+    <a id="education"></a>
+    <div class="headlines" style="position:relative; top: 450px;">Education</div><br>
+    <div style="position:relative; top: 150px;">
+    <div class="work_exp shaddow">
+        <div class="we we_left"><h2>Communication<br>System<br>Engineering</h2><h3>2015 – 2020</h3></div>
+        <div class="we we_right">
+        <p id="about" style="text-align: left; padding-left: 50px;"><b>Bachelor of Engineering</b><br>
+        <b>Ben-Gurion University of the Negev</b><br>
+        The program combines together topics of communication networks and communication systems,
+        a lot of knowledge from the fields of computer science,
+        electrical and computer engineering, and information systems.<br>
+        The program, which was built in accordance with the needs of the industry,<br>
+        is rich and intensive, with the understanding that the field of
+        communication is dynamic and requires the ability to change, learn, and innovate.
+        </div><br>
     </div><br>
-    <div style="width: 100%; height: 200px; position:relative; top: 450px;">
-        <div style="float: left; width: 30%; height: 100%; border-style: solid; border-color: black;"></div>
-        <div style="float: right; width: 70%;height: 100%; border-style: solid; border-color: black;"></div>
-    </div><br>
-    <div style="width: 100%; height: 200px; position:relative; top: 450px;">
-        <div style="float: left; width: 30%; height: 100%; border-style: solid; border-color: black;"></div>
-        <div style="float: right; width: 70%;height: 100%; border-style: solid; border-color: black;"></div>
-    </div><br>
 
-    <div class="headlines" style="position:relative; top: 500px;">References</div><br>
-    <div style="width: 100%; height: 200px; border-style: solid; border-color: black; position:relative; top: 550px;">
-
+    <div class="work_exp shaddow" style="position:relative;">
+      <div class="we we_left"><h2>Hacking<br>Defined<br>Experts</h2><h3>2014</h3></div>
+      <div class="we we_right">
+      <p id="about" style="text-align: left; padding-left: 50px; padding-right: 50px;"><b>Diploma - Penetration Testing</b><br>
+      <b>See-Security: Cyber & Information Security College</b><br>
+      Coordinates a number of attack courses: intelligence gathering, through penetration methods, to cleaning and institutionalizing the attack.
+      The program details the existing techniques in their layers: System, Network, Mobile, Web, Application,
+      and the Human Committee - Social Engineering.
+      The program is also used by the state system in Israel,
+      for assault and intelligence studies.</p></div>
     </div><br>
 
   </div>
+
+  </div>
   <br>
-
-  <div class="headlines" style="position:relative; top: 4300px;">Contact Me</div><br>
-
+  
+  <div id="contact_a" class="headlines" style="position:relative; top: 3900px;">Contact Me</div><br>
+  <div>
   <div class="callme">
     <form action="/action_page.php">
       <label for="fname">Full Name</label>
@@ -196,6 +211,6 @@
       <input type="submit" value="Send">
     </form>
   </div>
-
+</div>
 </body>
 </html>
