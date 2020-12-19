@@ -3,11 +3,7 @@ var categories_images =["benda.jpg", "chen_wedding.jpg", "eden_card.jpg", "elia.
 function img_change(myDiv){
 
   var first_element = categories_images.shift();
-
-
   categories_images.push(document.getElementById(myDiv).style.backgroundImage.slice(15,-2));
-  window.alert(first_element);
-
   document.getElementById(myDiv).style.backgroundImage = "url('PORTFOLIO/" + first_element + "')";
 
 
