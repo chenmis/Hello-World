@@ -2,6 +2,7 @@
 <html>
 <head>
   <link rel="stylesheet" href="css/mystyle.css">
+  <script src="someCode.js"></script>
   <title></title>
 </head>
 <body>
@@ -113,13 +114,13 @@
 
     <div class="container" style="width: 100%;">
         <div style="width: 49%; height: 100%; float: left;">
-            <div class="poto_div shaddow" style="height: 40%; background-image: url('PORTFOLIO/play.gif');">
+            <div id="poto1" class="poto_div shaddow" style="height: 40%; background-image: url('PORTFOLIO/play.gif');" onclick="img_change('poto1')">
             </div><br>
-            <div class="poto_div shaddow" style="height: 55%; background-image: url('PORTFOLIO/doron_and_yael.jpeg');"></div>
+            <div id="poto2" class="poto_div shaddow" style="height: 55%; background-image: url('PORTFOLIO/doron_and_yael.jpeg');" onclick="img_change('poto2')"></div>
         </div>
         <div style="margin-left: 51%; height: 100%;">
-          <div class="poto_div shaddow" style="height: 55%; background-image: url('PORTFOLIO/rado.jpg')"></div><br>
-          <div class="poto_div shaddow" style="height: 40%; background-image: url('PORTFOLIO/michael_logo.jpg')"></div>
+          <div id="poto3" class="poto_div shaddow" style="height: 55%; background-image: url('PORTFOLIO/rado.jpg')" onclick="img_change('poto3')"></div><br>
+          <div id="poto4" class="poto_div shaddow" style="height: 40%; background-image: url('PORTFOLIO/michael_logo.jpg')" onclick="img_change('poto4')"></div>
         </div>
     </div>
 
