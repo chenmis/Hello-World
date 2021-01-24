@@ -1,0 +1,5 @@
+https://www.yad2.co.il/products/electrical-appliances?category=1
+protocol = https, hostname = www.yad2.co.il, relative path = /products/electrical-appliances, query-parameters = category=1
+
+https://www.zap.co.il/models.aspx?sog=e-telephone
+protocol = https, hostname = www.zap.co.il, relative path = /models.aspx, query-parameters = sog=e-telephone
