@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Books</title>
+</head>
+<body>
+    {% include ('header.html') %}
+
+    {% set Title = 'My Books' %}
+    <h1> {{ Title | upper }} </h1>
+
+    {% if Books[0] %}
+        <h2> My favorite books are:</h2>
+      <ul>
+
+        {% for book in Books %}
+            <li> {{ book }}</li>
+        {% endfor %}
+      </ul>
+    {% else %}
+        <h3>There are no books in the listau4pmbQn</h3>
+    {% endif %}
+</body>
+</html>
