@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assignment 9</title>
+    <script src="{{ url_for('static',filename='js/search.js')}}"></script>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/contact.css')}}">
+</head>
+<body>
+    {% if session.get('logged_in') == True %}
+        <span>Hello, {{ session.get('username') }}!</span>
+    {% endif %}
+    <script> load('{{ name }}')</script>
+    <div class="search-form">
+        <form method="GET" action="/assignment9">
+            <h2>Search by first name</h2>
+            <input name="search"><br><br>
+            <input type="submit">
+        </form>
+    </div>
+
+    <div class="contact-list-9">
+        <h2>Contacts:</h2>
+        <main>
+        </main>
+    </div>
+    <div style="position: absolute; top: 0px; right: 15px">
+        {% if session.get('logged_in') == False %}
+            <form method="POST" action="/assignment9">
+                <h2>username:</h2>
+                <input name="username"><br><br>
+                <input type="submit">
+            </form>
+        {% else %}
+            <h2>Hello, {{ session.get('username') }}!</h2>
+            <form method="POST" action="/assignment9">
+                <button type="submit" name="username" value="">Logout</button>
+            </form>
+        {% endif %}
+    </div>
+</body>
+</html>
