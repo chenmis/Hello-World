@@ -528,7 +528,22 @@ def render(reel, studio):
     proc.wait()
     if cover is not None:
         cover.save(OUT / f"{reel['id']}_cover.jpg", quality=92)
+    add_sound(reel, scenes, starts, total, out)
     print(f"✔ {out.name}  ({total:.1f}s, {nframes} frames)")
+
+
+def add_sound(reel, scenes, starts, total, video):
+    """Write output/with_sound/<id>.mp4: same video + original music and synced sound effects."""
+    import soundtrack
+    dst = OUT / "with_sound"
+    dst.mkdir(exist_ok=True)
+    wav = dst / f"{reel['id']}.wav"
+    soundtrack.build(reel, scenes, starts, total, wav)
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(video), "-i", str(wav),
+                    "-map", "0:v", "-map", "1:a", "-c:v", "copy",
+                    "-af", "lowpass=f=14000,alimiter=limit=0.84:level=false", "-c:a", "aac", "-b:a", "192k",
+                    "-shortest", "-movflags", "+faststart", str(dst / video.name)], check=True)
+    wav.unlink()
 
 
 def main():

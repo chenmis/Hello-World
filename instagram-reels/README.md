@@ -20,6 +20,17 @@ Turns the logo and the studio photos into ready-to-post **Instagram Reels** (108
 
 These use **native-style captions** (black text on white boxes, like text added inside Instagram). This looks like a real post, not an ad.
 
+### With sound: `output/with_sound/`
+
+The same 8 videos with an **original soundtrack** (composed in code by `soundtrack.py`, so no copyright issues) plus sound effects synced to the visuals:
+- a whoosh on every transition
+- pops when badges, numbers and captions appear
+- sparkles on deals
+- a riser and impact on the "wait for it" reveal
+- ticks on montage cuts
+
+They're mixed to about -15 LUFS, which is Instagram's loudness level. Use these to share a finished preview, or post them as they are. For maximum reach, post the silent version and add a trending sound inside Instagram.
+
 > ⚠️ **The prices and discounts are examples.** Change them in `deals.json` before posting.
 
 ## Change the deals and re-render
