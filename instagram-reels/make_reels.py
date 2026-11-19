@@ -257,6 +257,33 @@ def native_lines(canvas, lines, t, y=300, start=0.1, stagger=0.35, size=68):
         y += lay.height + 6
 
 
+def subtitle_lines(canvas, lines, t, duration, y=1180, size=78):
+    """Her own style: white subtitle text with a dark shadow, lower-middle,
+    one phrase at a time (like her voice-over captions). Phrase 1 shows from frame 0 = instant hook."""
+    if not lines:
+        return
+    slot = duration / len(lines)
+    i = min(int(t / slot), len(lines) - 1)
+    lt = t - i * slot
+    lay = _subtitle(lines[i], size)
+    p = 1.0 if (i == 0 and lt < 0.05) else ease_out(lt / 0.18)
+    sc = 0.92 + 0.08 * p
+    lay2 = lay.resize((max(1, int(lay.width * sc)), max(1, int(lay.height * sc))), Image.BILINEAR)
+    paste_center(canvas, fade(lay2, max(p, 0.35 if i == 0 else 0)), W / 2, y)
+
+
+@lru_cache(maxsize=None)
+def _subtitle(txt, size):
+    lay = text_layer(txt, size, WHITE, "heebo", "Bold", shadow=True)
+    while lay.width > W - 90 and size > 40:
+        size -= 4
+        lay = text_layer(txt, size, WHITE, "heebo", "Bold", shadow=True)
+    out = Image.new("RGBA", lay.size, (0, 0, 0, 0))
+    out.alpha_composite(lay)
+    out.alpha_composite(lay)  # double shadow pass = darker, like her captions
+    return out
+
+
 @lru_cache(maxsize=None)
 def _native(txt, size):
     t = text_layer(txt, size, INK, "heebo", "Bold", shadow=False)
@@ -314,7 +341,9 @@ class Scene:
             if p > 0:
                 nb = _number(s["number"])
                 paste_center(c, nb.resize((max(1, int(nb.width * p)), max(1, int(nb.height * p))), Image.BILINEAR), W / 2, 330)
-        if s.get("style") == "native":
+        if s.get("style") == "subtitle":
+            subtitle_lines(c, s.get("lines", []), t, self.duration)
+        elif s.get("style") == "native":
             native_lines(c, s.get("lines", []), t, y=s.get("y", 300 if "number" not in s else 470))
         else:
             animated_lines(c, s.get("lines", []), t, s.get("pos", "top"), s.get("box", False))

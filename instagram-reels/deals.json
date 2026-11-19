@@ -3,7 +3,7 @@
  "studio": {
   "handle": "@shirllevii",
   "city": "ירושלים",
-  "cta": "לתיאום בוואטסאפ · לינק בביו",
+  "cta": "לייעוץ ללא עלות · לינק בביו",
   "tagline": "כל פרט חשוב"
  },
  "reels": [
@@ -71,11 +71,11 @@
      "image": "lash_brown.jpg",
      "duration": 3.4,
      "badge": [
-      "15%",
-      "הנחה"
+      "ייעוץ",
+      "ללא עלות"
      ],
-     "title": "לטיפול ראשון בהרמת ריסים",
-     "subtitle": "בתוקף עד סוף החודש"
+     "title": "הרמת ריסים בהתאמה אישית",
+     "subtitle": "מראה טבעי, נקי ולא עשוי מידי"
     },
     {
      "type": "end",
@@ -145,11 +145,11 @@
      "image": "brow_closeup.jpg",
      "duration": 3.4,
      "badge": [
-      "₪149",
-      "במקום ₪199"
+      "ייעוץ",
+      "ללא עלות"
      ],
-     "title": "הרמת גבות + עיצוב",
-     "subtitle": "מבצע לזמן מוגבל"
+     "title": "הרמת גבות + עיצוב טבעי",
+     "subtitle": "בהתאמה מדויקת למבנה הפנים שלך"
     },
     {
      "type": "end",
@@ -209,11 +209,11 @@
      "image": "client_face.jpg",
      "duration": 3.6,
      "badge": [
-      "₪50",
-      "חיסכון"
+      "ריסים",
+      "+ גבות"
      ],
-     "title": "קומבו הרמת ריסים + גבות",
-     "subtitle": "בתור אחד · מקומות מוגבלים"
+     "title": "הרמת ריסים + הרמת גבות",
+     "subtitle": "שיחת ייעוץ ללא עלות"
     },
     {
      "type": "end",
@@ -245,7 +245,7 @@
     {
      "type": "end",
      "duration": 3.2,
-     "headline": "נשארו תורים פנויים השבוע"
+     "headline": "לשיחת ייעוץ ללא עלות"
     }
    ]
   },
@@ -470,12 +470,205 @@
       "שלחי לחברה",
       "שצריכה לבוא איתך"
      ],
-     "footer": "מגיעות בזוג? 10% הנחה לשתיכן"
+     "footer": "שלחי לה את הסרטון עכשיו"
     },
     {
      "type": "end",
      "duration": 2.8,
      "headline": "תייגי אותה בתגובות"
+    }
+   ]
+  },
+  {
+   "id": "09_her_formula_brow_myth",
+   "scenes": [
+    {
+     "type": "photo",
+     "style": "subtitle",
+     "image": "brow_brushing.jpg",
+     "zoom": [
+      1.0,
+      1.12
+     ],
+     "duration": 3.6,
+     "lines": [
+      "אם את חושבת שהרמת גבות",
+      "הורסת את הגבות",
+      "את חייבת לשמוע את זה"
+     ],
+     "focus": [
+      0.45,
+      0.38
+     ]
+    },
+    {
+     "type": "photo",
+     "style": "subtitle",
+     "image": "brow_closeup.jpg",
+     "zoom": [
+      1.0,
+      1.1
+     ],
+     "duration": 3.6,
+     "lines": [
+      "התוצאה זמנית",
+      "השערה ממשיכה לצמוח כרגיל",
+      "ומתחלפת באופן טבעי"
+     ],
+     "fit": true
+    },
+    {
+     "type": "photo",
+     "style": "subtitle",
+     "image": "client_face.jpg",
+     "zoom": [
+      1.0,
+      1.12
+     ],
+     "duration": 3.6,
+     "lines": [
+      "כשעושים את זה נכון",
+      "בהתאמה למבנה הפנים שלך",
+      "מקבלים מראה טבעי ונקי"
+     ],
+     "focus": [
+      0.5,
+      0.42
+     ]
+    },
+    {
+     "type": "end",
+     "duration": 3.0,
+     "headline": "יש לך שאלה? תשאלי אותי"
+    }
+   ]
+  },
+  {
+   "id": "10_her_formula_if_you_feel",
+   "scenes": [
+    {
+     "type": "photo",
+     "style": "subtitle",
+     "image": "brow_closeup.jpg",
+     "zoom": [
+      1.0,
+      1.12
+     ],
+     "duration": 3.6,
+     "lines": [
+      "אם את מרגישה",
+      "שהגבות שלך אף פעם",
+      "לא יוצאות סימטריות"
+     ],
+     "fit": true
+    },
+    {
+     "type": "photo",
+     "style": "subtitle",
+     "image": "brow_brushing.jpg",
+     "zoom": [
+      1.12,
+      1.0
+     ],
+     "duration": 3.0,
+     "lines": [
+      "זה לא את.",
+      "זה העיצוב."
+     ],
+     "focus": [
+      0.45,
+      0.38
+     ]
+    },
+    {
+     "type": "photo",
+     "style": "subtitle",
+     "image": "client_face.jpg",
+     "zoom": [
+      1.0,
+      1.12
+     ],
+     "duration": 3.6,
+     "lines": [
+      "עיצוב גבות בהתאמה",
+      "מדויקת למבנה הפנים שלך",
+      "טבעי, נקי ולא עשוי מידי"
+     ],
+     "focus": [
+      0.5,
+      0.42
+     ]
+    },
+    {
+     "type": "end",
+     "duration": 3.0,
+     "headline": "תשלחי לי הודעה"
+    }
+   ]
+  },
+  {
+   "id": "11_her_formula_lash_myth",
+   "scenes": [
+    {
+     "type": "photo",
+     "style": "subtitle",
+     "image": "lash_green.jpg",
+     "zoom": [
+      1.0,
+      1.12
+     ],
+     "duration": 3.6,
+     "lines": [
+      "אם את חושבת",
+      "שהרמת ריסים הורסת",
+      "את הריסים הטבעיים"
+     ],
+     "focus": [
+      0.58,
+      0.55
+     ]
+    },
+    {
+     "type": "photo",
+     "style": "subtitle",
+     "image": "lash_brown.jpg",
+     "zoom": [
+      1.12,
+      1.0
+     ],
+     "duration": 3.6,
+     "lines": [
+      "את חייבת לשמוע את זה",
+      "הרמה לא מאריכה ולא מוסיפה",
+      "היא מרימה את הריסים שלך"
+     ],
+     "focus": [
+      0.5,
+      0.55
+     ]
+    },
+    {
+     "type": "photo",
+     "style": "subtitle",
+     "image": "client_face.jpg",
+     "zoom": [
+      1.0,
+      1.12
+     ],
+     "duration": 3.0,
+     "lines": [
+      "בלי מסלסל ובלי הדבקות",
+      "רק הריסים שלך. במיטבם."
+     ],
+     "focus": [
+      0.5,
+      0.42
+     ]
+    },
+    {
+     "type": "end",
+     "duration": 3.0,
+     "headline": "תייגי חברה שצריכה לשמוע"
     }
    ]
   }
