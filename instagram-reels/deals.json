@@ -1,59 +1,483 @@
 {
-  "_note": "Edit the texts / prices here, then run:  python3 make_reels.py   (videos land in output/)",
-  "studio": {
-    "handle": "@shirllevii",
-    "city": "ירושלים",
-    "cta": "לתיאום בוואטסאפ · לינק בביו",
-    "tagline": "כל פרט חשוב"
-  },
-  "reels": [
+ "_note": "Edit the texts / prices here, then run:  python3 make_reels.py   (videos land in output/)",
+ "studio": {
+  "handle": "@shirllevii",
+  "city": "ירושלים",
+  "cta": "לתיאום בוואטסאפ · לינק בביו",
+  "tagline": "כל פרט חשוב"
+ },
+ "reels": [
+  {
+   "id": "01_lash_lift_deal",
+   "scenes": [
     {
-      "id": "01_lash_lift_deal",
-      "scenes": [
-        {"type": "photo", "image": "lash_brown.jpg", "focus": [0.5, 0.55], "zoom": [1.0, 1.18], "duration": 2.4,
-         "pos": "top", "lines": ["הריסים שלך.", "בלי מסקרה."]},
-        {"type": "photo", "image": "lash_green.jpg", "focus": [0.58, 0.55], "zoom": [1.12, 1.0], "duration": 2.6,
-         "pos": "lower", "box": true, "lines": ["הרמת ריסים + צביעה", "תוצאה שמחזיקה 6–8 שבועות"]},
-        {"type": "photo", "image": "client_face.jpg", "focus": [0.5, 0.4], "zoom": [1.0, 1.12], "duration": 2.4,
-         "pos": "lower", "box": true, "lines": ["מתעוררת מוכנה.", "כל בוקר."]},
-        {"type": "deal", "image": "lash_brown.jpg", "duration": 3.4,
-         "badge": ["15%", "הנחה"], "title": "לטיפול ראשון בהרמת ריסים", "subtitle": "בתוקף עד סוף החודש"},
-        {"type": "end", "duration": 3.0, "headline": "שריני תור עכשיו"}
-      ]
+     "type": "photo",
+     "image": "lash_brown.jpg",
+     "focus": [
+      0.5,
+      0.55
+     ],
+     "zoom": [
+      1.0,
+      1.18
+     ],
+     "duration": 2.4,
+     "pos": "top",
+     "lines": [
+      "הריסים שלך.",
+      "בלי מסקרה."
+     ]
     },
     {
-      "id": "02_brow_lamination_deal",
-      "scenes": [
-        {"type": "photo", "image": "brow_closeup.jpg", "fit": true, "zoom": [1.0, 1.1], "duration": 2.4,
-         "pos": "top", "lines": ["ממלאת גבות בעיפרון?", "יש דרך קלה יותר"]},
-        {"type": "photo", "image": "brow_brushing.jpg", "focus": [0.45, 0.38], "zoom": [1.15, 1.0], "duration": 2.6,
-         "pos": "lower", "box": true, "lines": ["הרמת גבות (למינציה)", "עיצוב · הרמה · צביעה"]},
-        {"type": "photo", "image": "client_face.jpg", "focus": [0.5, 0.33], "zoom": [1.05, 1.2], "duration": 2.4,
-         "pos": "lower", "box": true, "lines": ["גבות מלאות ומסודרות", "עד 6 שבועות"]},
-        {"type": "deal", "image": "brow_closeup.jpg", "duration": 3.4,
-         "badge": ["₪149", "במקום ₪199"], "title": "הרמת גבות + עיצוב", "subtitle": "מבצע לזמן מוגבל"},
-        {"type": "end", "duration": 3.0, "headline": "שריני תור עכשיו"}
-      ]
+     "type": "photo",
+     "image": "lash_green.jpg",
+     "focus": [
+      0.58,
+      0.55
+     ],
+     "zoom": [
+      1.12,
+      1.0
+     ],
+     "duration": 2.6,
+     "pos": "lower",
+     "box": true,
+     "lines": [
+      "הרמת ריסים + צביעה",
+      "תוצאה שמחזיקה 6–8 שבועות"
+     ]
     },
     {
-      "id": "03_combo_deal",
-      "scenes": [
-        {"type": "split", "images": ["lash_brown.jpg", "brow_closeup.jpg"], "labels": ["ריסים", "גבות"], "focus": [[0.5, 0.5], [0.45, 0.38]],
-         "duration": 2.8, "lines": ["ריסים או גבות?"]},
-        {"type": "photo", "image": "client_face.jpg", "focus": [0.5, 0.38], "zoom": [1.0, 1.15], "duration": 2.6,
-         "pos": "top", "lines": ["למה לבחור?", "קחי את שניהם"]},
-        {"type": "deal", "image": "client_face.jpg", "duration": 3.6,
-         "badge": ["₪50", "חיסכון"], "title": "קומבו הרמת ריסים + גבות", "subtitle": "בתור אחד · מקומות מוגבלים"},
-        {"type": "end", "duration": 3.0, "headline": "שלחי הודעה ושריני"}
-      ]
+     "type": "photo",
+     "image": "client_face.jpg",
+     "focus": [
+      0.5,
+      0.4
+     ],
+     "zoom": [
+      1.0,
+      1.12
+     ],
+     "duration": 2.4,
+     "pos": "lower",
+     "box": true,
+     "lines": [
+      "מתעוררת מוכנה.",
+      "כל בוקר."
+     ]
     },
     {
-      "id": "04_every_detail_montage",
-      "scenes": [
-        {"type": "montage", "images": ["lash_green.jpg", "brow_closeup.jpg", "lash_brown.jpg", "brow_brushing.jpg", "client_face.jpg", "lash_green.jpg", "brow_closeup.jpg"],
-         "cut": 0.55, "lines": ["כל פרט", "חשוב."]},
-        {"type": "end", "duration": 3.2, "headline": "נשארו תורים פנויים השבוע"}
-      ]
+     "type": "deal",
+     "image": "lash_brown.jpg",
+     "duration": 3.4,
+     "badge": [
+      "15%",
+      "הנחה"
+     ],
+     "title": "לטיפול ראשון בהרמת ריסים",
+     "subtitle": "בתוקף עד סוף החודש"
+    },
+    {
+     "type": "end",
+     "duration": 3.0,
+     "headline": "שריני תור עכשיו"
     }
-  ]
+   ]
+  },
+  {
+   "id": "02_brow_lamination_deal",
+   "scenes": [
+    {
+     "type": "photo",
+     "image": "brow_closeup.jpg",
+     "fit": true,
+     "zoom": [
+      1.0,
+      1.1
+     ],
+     "duration": 2.4,
+     "pos": "top",
+     "lines": [
+      "ממלאת גבות בעיפרון?",
+      "יש דרך קלה יותר"
+     ]
+    },
+    {
+     "type": "photo",
+     "image": "brow_brushing.jpg",
+     "focus": [
+      0.45,
+      0.38
+     ],
+     "zoom": [
+      1.15,
+      1.0
+     ],
+     "duration": 2.6,
+     "pos": "lower",
+     "box": true,
+     "lines": [
+      "הרמת גבות (למינציה)",
+      "עיצוב · הרמה · צביעה"
+     ]
+    },
+    {
+     "type": "photo",
+     "image": "client_face.jpg",
+     "focus": [
+      0.5,
+      0.33
+     ],
+     "zoom": [
+      1.05,
+      1.2
+     ],
+     "duration": 2.4,
+     "pos": "lower",
+     "box": true,
+     "lines": [
+      "גבות מלאות ומסודרות",
+      "עד 6 שבועות"
+     ]
+    },
+    {
+     "type": "deal",
+     "image": "brow_closeup.jpg",
+     "duration": 3.4,
+     "badge": [
+      "₪149",
+      "במקום ₪199"
+     ],
+     "title": "הרמת גבות + עיצוב",
+     "subtitle": "מבצע לזמן מוגבל"
+    },
+    {
+     "type": "end",
+     "duration": 3.0,
+     "headline": "שריני תור עכשיו"
+    }
+   ]
+  },
+  {
+   "id": "03_combo_deal",
+   "scenes": [
+    {
+     "type": "split",
+     "images": [
+      "lash_brown.jpg",
+      "brow_closeup.jpg"
+     ],
+     "labels": [
+      "ריסים",
+      "גבות"
+     ],
+     "focus": [
+      [
+       0.5,
+       0.5
+      ],
+      [
+       0.45,
+       0.38
+      ]
+     ],
+     "duration": 2.8,
+     "lines": [
+      "ריסים או גבות?"
+     ]
+    },
+    {
+     "type": "photo",
+     "image": "client_face.jpg",
+     "focus": [
+      0.5,
+      0.38
+     ],
+     "zoom": [
+      1.0,
+      1.15
+     ],
+     "duration": 2.6,
+     "pos": "top",
+     "lines": [
+      "למה לבחור?",
+      "קחי את שניהם"
+     ]
+    },
+    {
+     "type": "deal",
+     "image": "client_face.jpg",
+     "duration": 3.6,
+     "badge": [
+      "₪50",
+      "חיסכון"
+     ],
+     "title": "קומבו הרמת ריסים + גבות",
+     "subtitle": "בתור אחד · מקומות מוגבלים"
+    },
+    {
+     "type": "end",
+     "duration": 3.0,
+     "headline": "שלחי הודעה ושריני"
+    }
+   ]
+  },
+  {
+   "id": "04_every_detail_montage",
+   "scenes": [
+    {
+     "type": "montage",
+     "images": [
+      "lash_green.jpg",
+      "brow_closeup.jpg",
+      "lash_brown.jpg",
+      "brow_brushing.jpg",
+      "client_face.jpg",
+      "lash_green.jpg",
+      "brow_closeup.jpg"
+     ],
+     "cut": 0.55,
+     "lines": [
+      "כל פרט",
+      "חשוב."
+     ]
+    },
+    {
+     "type": "end",
+     "duration": 3.2,
+     "headline": "נשארו תורים פנויים השבוע"
+    }
+   ]
+  },
+  {
+   "id": "05_viral_pov_loop",
+   "loop": true,
+   "scenes": [
+    {
+     "type": "photo",
+     "style": "native",
+     "image": "lash_green.jpg",
+     "focus": [
+      0.58,
+      0.55
+     ],
+     "zoom": [
+      1.0,
+      1.12
+     ],
+     "duration": 2.8,
+     "lines": [
+      "POV: קמת בבוקר",
+      "והריסים כבר מסולסלים"
+     ]
+    },
+    {
+     "type": "photo",
+     "style": "native",
+     "image": "lash_brown.jpg",
+     "focus": [
+      0.5,
+      0.55
+     ],
+     "zoom": [
+      1.12,
+      1.0
+     ],
+     "duration": 2.4,
+     "lines": [
+      "בלי מסלסל.",
+      "בלי מסקרה."
+     ]
+    },
+    {
+     "type": "photo",
+     "style": "native",
+     "image": "client_face.jpg",
+     "focus": [
+      0.5,
+      0.4
+     ],
+     "zoom": [
+      1.0,
+      1.1
+     ],
+     "duration": 2.6,
+     "lines": [
+      "וככה 6–8 שבועות"
+     ],
+     "footer": "הרמת ריסים · ירושלים · לינק בביו"
+    }
+   ]
+  },
+  {
+   "id": "06_viral_wait_for_reveal",
+   "scenes": [
+    {
+     "type": "reveal",
+     "image": "client_face.jpg",
+     "duration": 6.0,
+     "reveal_at": 0.62,
+     "from": {
+      "zoom": 3.4,
+      "focus": [
+       0.69,
+       0.47
+      ]
+     },
+     "to": {
+      "zoom": 1.0,
+      "focus": [
+       0.5,
+       0.48
+      ]
+     },
+     "lines_before": [
+      "חכי לסוף..."
+     ],
+     "lines_after": [
+      "ריסים + גבות",
+      "בטיפול אחד"
+     ]
+    },
+    {
+     "type": "end",
+     "duration": 2.8,
+     "headline": "רוצה גם? שלחי הודעה"
+    }
+   ]
+  },
+  {
+   "id": "07_viral_3_signs_listicle",
+   "scenes": [
+    {
+     "type": "photo",
+     "image": "lash_brown.jpg",
+     "focus": [
+      0.5,
+      0.55
+     ],
+     "zoom": [
+      1.0,
+      1.15
+     ],
+     "duration": 2.3,
+     "pos": "top",
+     "lines": [
+      "3 סימנים",
+      "שאת צריכה הרמת ריסים"
+     ]
+    },
+    {
+     "type": "photo",
+     "style": "native",
+     "number": 1,
+     "image": "lash_green.jpg",
+     "focus": [
+      0.58,
+      0.55
+     ],
+     "zoom": [
+      1.1,
+      1.0
+     ],
+     "duration": 2.2,
+     "lines": [
+      "את לא יוצאת מהבית",
+      "בלי מסלסל ריסים"
+     ]
+    },
+    {
+     "type": "photo",
+     "style": "native",
+     "number": 2,
+     "image": "brow_closeup.jpg",
+     "fit": true,
+     "zoom": [
+      1.0,
+      1.1
+     ],
+     "duration": 2.2,
+     "lines": [
+      "המסקרה נמרחת",
+      "עד הצהריים"
+     ]
+    },
+    {
+     "type": "photo",
+     "style": "native",
+     "number": 3,
+     "image": "client_face.jpg",
+     "focus": [
+      0.5,
+      0.4
+     ],
+     "zoom": [
+      1.0,
+      1.12
+     ],
+     "duration": 2.4,
+     "lines": [
+      "את רוצה להתעורר",
+      "מוכנה כל בוקר"
+     ]
+    },
+    {
+     "type": "end",
+     "duration": 2.8,
+     "headline": "שמרי את הסרטון"
+    }
+   ]
+  },
+  {
+   "id": "08_viral_send_a_friend",
+   "scenes": [
+    {
+     "type": "choice",
+     "images": [
+      "lash_green.jpg",
+      "lash_brown.jpg"
+     ],
+     "focus": [
+      [
+       0.58,
+       0.55
+      ],
+      [
+       0.5,
+       0.55
+      ]
+     ],
+     "duration": 3.6,
+     "lines": [
+      "איזה מהן את?",
+      "תגיבי 1 או 2"
+     ]
+    },
+    {
+     "type": "photo",
+     "style": "native",
+     "image": "client_face.jpg",
+     "focus": [
+      0.5,
+      0.4
+     ],
+     "zoom": [
+      1.0,
+      1.12
+     ],
+     "duration": 2.8,
+     "lines": [
+      "שלחי לחברה",
+      "שצריכה לבוא איתך"
+     ],
+     "footer": "מגיעות בזוג? 10% הנחה לשתיכן"
+    },
+    {
+     "type": "end",
+     "duration": 2.8,
+     "headline": "תייגי אותה בתגובות"
+    }
+   ]
+  }
+ ]
 }

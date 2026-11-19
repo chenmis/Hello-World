@@ -9,6 +9,17 @@ Turns the logo and the studio photos into ready-to-post **Instagram Reels** (108
 | `output/03_combo_deal.mp4` | Lashes / brows split screen, "Why choose?", **combo saves ₪50**, CTA | 12.0 s |
 | `output/04_every_detail_montage.mp4` | Fast-cut "כל פרט חשוב" montage with a punch-in on every cut and an urgency CTA | 7.1 s |
 
+### Viral-format reels (built from what's getting the most views)
+
+| File | Viral format | Why it works |
+|---|---|---|
+| `output/05_viral_pov_loop.mp4` | **POV + seamless loop.** "POV: קמת בבוקר והריסים כבר מסולסלים", with the end flowing back into the start | Loops get rewatched, and **watch time** is Instagram's #1 ranking signal |
+| `output/06_viral_wait_for_reveal.mp4` | **"Wait for it" reveal.** An extreme lash close-up with a progress bar slowly pulls back to the full face | The suspense keeps viewers to the end; transformation reveals are the top lash/brow format |
+| `output/07_viral_3_signs_listicle.mp4` | **"3 signs you need a lash lift."** Numbered listicle ending in "save this video" | Lists get **saved**, and saves rank higher than likes |
+| `output/08_viral_send_a_friend.mp4` | **Comment and send bait.** "Which one are you? Comment 1 or 2" plus "Send to a friend who should come with you" (with a bring-a-friend deal) | **Sends** are the strongest signal for reaching non-followers |
+
+These use **native-style captions** (black text on white boxes, like text added inside Instagram). This looks like a real post, not an ad.
+
 > ⚠️ **The prices and discounts are examples.** Change them in `deals.json` before posting.
 
 ## Change the deals and re-render

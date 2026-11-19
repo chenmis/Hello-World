@@ -12,6 +12,7 @@ All copy, prices and scene timing live in deals.json.
 import json
 import math
 import random
+import re
 import subprocess
 import sys
 from functools import lru_cache
@@ -71,9 +72,18 @@ def font(name, size, weight="Bold"):
     return f
 
 
+_LTR_RUN = re.compile(r"[A-Za-z0-9@][A-Za-z0-9@._:%–\-]*[A-Za-z0-9:%]|[A-Za-z0-9]")
+
+
+def ltr_isolate(text):
+    """Keep Latin words and number ranges (POV:, 6–8, @handle) in left-to-right order inside Hebrew lines."""
+    return _LTR_RUN.sub(lambda m: "\u2066" + m.group(0) + "\u2069", text)
+
+
 def text_layer(text, size, color=WHITE, family="heebo", weight="ExtraBold", shadow=True, stroke=0):
     """Render one line of (RTL) text to a tight RGBA image with a soft shadow."""
     f = font(family, size, weight)
+    text = ltr_isolate(text)
     kw = dict(direction="rtl", language="he", features=["kern", "liga"])
     bbox = f.getbbox(text, **kw, stroke_width=stroke)
     pad = int(size * 0.35)
@@ -231,6 +241,50 @@ def animated_lines(canvas, lines, t, pos="top", box=False, start=0.15, stagger=0
         y += l.height
 
 
+def native_lines(canvas, lines, t, y=300, start=0.1, stagger=0.35, size=68):
+    """Instagram/TikTok 'native' captions: black text on white rounded boxes, popping in.
+    Native-looking text reads as a real post rather than an ad."""
+    for i, txt in enumerate(lines):
+        p = ease_back((t - start - i * stagger) / 0.3)
+        lay = _native(txt, size)
+        while lay.width > W - 90:
+            size -= 4
+            lay = _native(txt, size)
+        if p > 0:
+            sc = max(0.01, p)
+            lay2 = lay.resize((max(1, int(lay.width * sc)), max(1, int(lay.height * sc))), Image.BILINEAR)
+            paste_center(canvas, lay2, W / 2, y + lay.height / 2)
+        y += lay.height + 6
+
+
+@lru_cache(maxsize=None)
+def _native(txt, size):
+    t = text_layer(txt, size, INK, "heebo", "Bold", shadow=False)
+    box = rounded_box((t.width - int(size * 0.2), t.height - int(size * 0.35)), WHITE, 245, radius=int(size * 0.3))
+    paste_center(box, t, box.width / 2, box.height / 2)
+    return box
+
+
+@lru_cache(maxsize=None)
+def _number(n):
+    d = 170
+    b = Image.new("RGBA", (d + 20, d + 20), (0, 0, 0, 0))
+    ImageDraw.Draw(b).ellipse([10, 10, d + 10, d + 10], fill=MAUVE + (255,), outline=GOLD + (255,), width=6)
+    paste_center(b, text_layer(str(n), 110, WHITE, "heebo", "Black", shadow=False), b.width / 2, b.height / 2)
+    return b
+
+
+def sharp_crop(name, z, focus):
+    """Crop straight from the original photo (sharper than the pre-scaled base at high zoom)."""
+    img = photo(name)
+    s0 = max(W / img.width, H / img.height) * z
+    cw, ch = W / s0, H / s0
+    cx, cy = focus[0] * img.width, focus[1] * img.height
+    x0 = min(max(cx - cw / 2, 0), img.width - cw)
+    y0 = min(max(cy - ch / 2, 0), img.height - ch)
+    return img.resize((W, H), Image.BICUBIC, box=(x0, y0, x0 + cw, y0 + ch)).convert("RGBA")
+
+
 @lru_cache(maxsize=None)
 def _line(txt, size, weight):
     return text_layer(txt, size, WHITE, "heebo", weight)
@@ -255,7 +309,63 @@ class Scene:
         c = ken_burns(s["image"], t / self.duration, tuple(s.get("zoom", (1, 1.15))), tuple(s.get("focus", (0.5, 0.5))), s.get("fit", False))
         c.alpha_composite(vignette())
         self.spark.draw(c, t, 0.7)
-        animated_lines(c, s.get("lines", []), t, s.get("pos", "top"), s.get("box", False))
+        if "number" in s:
+            p = ease_back((t - 0.05) / 0.35)
+            if p > 0:
+                nb = _number(s["number"])
+                paste_center(c, nb.resize((max(1, int(nb.width * p)), max(1, int(nb.height * p))), Image.BILINEAR), W / 2, 330)
+        if s.get("style") == "native":
+            native_lines(c, s.get("lines", []), t, y=s.get("y", 300 if "number" not in s else 470))
+        else:
+            animated_lines(c, s.get("lines", []), t, s.get("pos", "top"), s.get("box", False))
+        if s.get("footer"):
+            native_lines(c, [s["footer"]], t, y=1340, start=0.6, size=50)
+        return c
+
+    def _reveal(self, t):
+        """'Wait for it' - starts on an extreme close-up and pulls back to the full result."""
+        s = self.s
+        a, b = s["from"], s["to"]
+        ra = s.get("reveal_at", 0.65)
+        p = ease_in_out(min(1.0, (t / self.duration) / ra))
+        z = math.exp(math.log(a["zoom"]) + (math.log(b["zoom"]) - math.log(a["zoom"])) * p)
+        foc = (a["focus"][0] + (b["focus"][0] - a["focus"][0]) * p, a["focus"][1] + (b["focus"][1] - a["focus"][1]) * p)
+        c = sharp_crop(s["image"], z, foc)
+        c.alpha_composite(vignette())
+        done = t / self.duration >= ra
+        if not done:
+            native_lines(c, s.get("lines_before", []), t, y=300)
+            # progress bar - makes people wait for the reveal
+            bw = int((W - 160) * min(1, (t / self.duration) / ra))
+            c.alpha_composite(rounded_box((W - 160, 14), WHITE, 90, 7), (80, 250))
+            if bw > 14:
+                c.alpha_composite(rounded_box((bw, 14), WHITE, 255, 7), (80, 250))
+        else:
+            if t - ra * self.duration < 0.12:
+                c = Image.blend(c, Image.new("RGBA", (W, H), (255, 255, 255, 255)), 0.6)
+            self.spark.draw(c, t, 1.0)
+            native_lines(c, s.get("lines_after", []), t - ra * self.duration, y=300)
+        return c
+
+    def _choice(self, t):
+        """Comment bait: two options, 'comment 1 or 2' + 'send to a friend'."""
+        s = self.s
+        c = Image.new("RGBA", (W, H), INK + (255,))
+        hh = (H - 8) // 2
+        for i, name in enumerate(s["images"]):
+            foc = tuple(s.get("focus", [[0.5, 0.5]] * 2)[i])
+            fr = ken_burns(name, t / self.duration, (1.0, 1.12), foc)
+            fr = fr.resize((W, int(H * W / W)), Image.BILINEAR).crop((0, (H - hh) // 2, W, (H - hh) // 2 + hh))
+            slide = (1 - ease_out(t / 0.45)) * (W if i == 0 else -W)
+            c.alpha_composite(fr, (int(slide), 0 if i == 0 else hh + 8))
+            q = ease_back((t - 0.5 - i * 0.25) / 0.35)
+            if q > 0:
+                nb = _number(i + 1)
+                nb = nb.resize((max(1, int(nb.width * q * 0.8)), max(1, int(nb.height * q * 0.8))), Image.BILINEAR)
+                paste_center(c, nb, W - 150, (hh / 2 if i == 0 else hh + 8 + hh / 2))
+        native_lines(c, s.get("lines", []), t, y=hh - 40, start=0.3, size=64)
+        if s.get("footer"):
+            native_lines(c, [s["footer"]], t, y=H - 520, start=1.2, size=54)
         return c
 
     def _split(self, t):
@@ -406,6 +516,10 @@ def render(reel, studio):
         if i + 1 < len(scenes) and scenes[i].duration - lt < XFADE and scenes[i].s["type"] != "montage":
             a = 1 - (scenes[i].duration - lt) / XFADE
             frame = Image.blend(frame, scenes[i + 1].frame(0.0), ease_in_out(a))
+        elif i + 1 == len(scenes) and reel.get("loop") and total - t < 0.4:
+            # seamless loop: fade the last frame into the first so rewatches feel continuous
+            a = 1 - (total - t) / 0.4
+            frame = Image.blend(frame, scenes[0].frame(0.0), ease_in_out(a))
         rgb = frame.convert("RGB")
         if f == int(1.6 * FPS):
             cover = rgb
